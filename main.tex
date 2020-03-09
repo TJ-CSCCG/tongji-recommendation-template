@@ -1,0 +1,175 @@
+% BUPTletter_example.tex - an example latex file to illustrate BUPTletter.cls
+%
+% Template by Brian Wood (brian.wood@oregonstate.edu).  Please feel free to send suggestions for changes; this template/cls is not exactly elegantly done!
+% Modified by Shaozuo YU (AugustYum@outlook.com) to fit the need of Tongji students.
+
+
+\documentclass[12pt]{Tongjiletter}
+\usepackage{fontspec} 
+\usepackage{tikz} 
+\usepackage{xcolor}
+	% Set up custom OSU orange color
+	\definecolor{tongjiblue}{rgb}{0, 0.372, 0.643}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+%
+% This section is just a bunch of busywork so that the second and following pages read ``Page X of Y''
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\rhead{Page \thepage \hspace{1pt} of \pageref{LastPage}}
+%
+%
+% Set custom font here.  BUPT uses Cambria truetype font.  Comment this line out if you do not have a Cambria font (originally included with this template) installed; computer modern (or whatever your current default font is) will be substituted.
+%
+\setmainfont{[Cambria.ttf]}[BoldFont  = [CambriaBold.ttf], ItalicFont  = [CambriaItalic.ttf], BoldItalicFont = [CambriaBoldItalic.ttf] ]
+%
+% The material below is a whole big dang thing whose purpose is just to set up a fixed coordinate system for \tikz so that you can put the Department or School address in the upper right-hand side without it moving all around every time you change something in the page.  I think it works.
+% Defining a new coordinate system for the page:
+%
+% --------------------------
+% |(-1,1)    (0,1)    (1,1)|
+% |                        |
+% |(-1,0)    (0,0)    (1,0)|
+% |                        |
+% |(-1,-1)   (0,-1)  (1,-1)|
+% --------------------------
+\makeatletter
+\def\parsecomma#1,#2\endparsecomma{\def\page@x{#1}\def\page@y{#2}}
+\tikzdeclarecoordinatesystem{page}{
+    \parsecomma#1\endparsecomma
+    \pgfpointanchor{current page}{north east}
+    % Save the upper right corner
+    \pgf@xc=\pgf@x%
+    \pgf@yc=\pgf@y%
+    % save the lower left corner
+    \pgfpointanchor{current page}{south west}
+    \pgf@xb=\pgf@x%
+    \pgf@yb=\pgf@y%
+    % Transform to the correct placement
+    \pgfmathparse{(\pgf@xc-\pgf@xb)/2.*\page@x+(\pgf@xc+\pgf@xb)/2.}
+    \expandafter\pgf@x\expandafter=\pgfmathresult pt
+    \pgfmathparse{(\pgf@yc-\pgf@yb)/2.*\page@y+(\pgf@yc+\pgf@yb)/2.}
+    \expandafter\pgf@y\expandafter=\pgfmathresult pt
+}
+\makeatother
+%
+%
+%%%%%%%%%%% Put Personal Information Here %%%%%%%%%%%
+%
+\def\name{Allen Turing,\\
+Associate Professor,\\
+Department of Computer Science, Tongji University
+}
+%
+% List your degree(s), licences, etc. here if you like.
+%\def\What{, Your degrees, etc.} 
+%
+% Set the name of your Department or School here
+% I honestly don't know why the negative spacing is necessary to get the alignment of the first line correct.  This must be a ``\tikz'' thing.
+%%%%%%%%%%%%%%%%%%  School or Department %%%%%%%%%%%%%%%
+\def\Where{\hspace{-1.2mm}\textbf{\color{tongjiblue}%{tongjiblue}
+Department of Computer Science,\\College of Electronic and Information Engineering,\\ Tongji University
+}} 
+%%%%%%%%%%%%  Additional Contact Information %%%%%%%%%%%
+%
+% Set your preferred primary contact address here.
+\def\Address{4800 Caoan Road,\\
+Jiading Dist.,} 
+%
+\def\CityZip{Shanghai, 200082} 
+%
+% Set your BUPT e-mail here
+\def\Email{\textbf{\color{tongjiblue}E-mail}: xxx@tongji.edu.cn}
+%
+% Set your preferred contact number here
+\def\TEL{\textbf{\color{tongjiblue}Phone}: 541-555-5555}
+%
+% Set your department or personal website here
+\def\URL{\textbf{\color{tongjiblue}URL}: http://www.tongji.edu.cn/}
+%
+%%%%%%%%%%%%%%%%  Footer information  %%%%%%%%%%%%%%%%%%
+%
+%  The next line is for your college, used as a footer.  If you prefer not to have this, just comment out these lines in favor of the line labeled "[[Alternate]]" below
+\def\school{\small{
+  Tongji $\cdot$
+     ~Department of Computer Science $\cdot$
+     ~Zhixin Building, 4800 Caoan Road $\cdot$
+     ~Shanghai, OR 97331-2409} } 
+% \def\school{~}  % [[Alternate]]
+%
+%%%%%%%%%%%%%%%%%%%%%  Signature line  %%%%%%%%%%%%%%%%%%%%%
+%
+% Set your signature line here.
+% One can add a signature image in a PDF file using the following code; this requires a file called "signature_block.pdf" to be installed in the same folder as the .tex file.  The vertical spacing (\vspace) and the scaling will have to be adjusted to get things to look correct for your particular signature image. Alternatively, comment out the following line in favor of the one labeled "[[Alternate]]" if you want to sign a paper copy of the letter.
+%
+\signature{ 
+\vspace{-12mm}\includegraphics[scale=0.40]{signature_block.pdf}\\\vspace{-2mm}
+\name}
+%\signature{\name}  % [[Alternate]]
+
+% This block sets up the address on the right-hand side of the header. 
+%
+% The following lines just compile the information you set up into the LaTex letter variable "address" for later use.
+%
+%The following command "clears out" the default address so that it can be better set using \tikz
+\address{}
+
+\def\newaddress{
+\Where\\ 
+\Address\\ 
+\CityZip\\ 
+\TEL\\ 
+\Email\\ 
+\URL 
+}
+%
+%%%%%%%%%%%  DATE  %%%%%%%%%%%%%%%%%%%%%%%%%
+% If you want a date different from the current date, comment out the next line in favor of the line labeled "[[Alternate]]".  The ``\vspace{10mm}'' just moves the date down a tiny bit so it doesn't interfere with the header.  This can be adjusted to your preference.
+%
+\date{\vspace{10mm} \today}
+%\date{\vspace{10mm} 20 September 2020}  %[[Alternate]]
+%
+%%%%%%%%%%% Set the subject here if there is one  %%%%
+%\subject{Stuff} % optional subject line
+
+\begin{document}
+%
+%
+%%%%%%%%  The "To" address goes here.
+%
+\begin{letter}{
+               Some University\\ 
+               Some Addresss\\ 
+               SomeTown, SomeState 					       				  		 ~~SomeZip
+               }
+% This line sets up the return address to the right-side of the OSU logo.  The location is set with absolute node addresses using ``\tikz''.  It can still be a bit fussy, and you may need to alter this a little to get things to look right.  The bit that changes the position are the numbers in parentheses ``at (14.2,2.7)''
+%
+\begin{tikzpicture}[remember picture,overlay,,every node/.style={anchor=center}]
+\node[text width=7cm] at (page cs:0.5,0.73){\small \newaddress};
+\end{tikzpicture} 
+
+%%%%%%  The ``opening'' is just the method of address you would like to use at the start of the letter.
+%
+\opening{Dear Application Committee,}
+
+%%%%%%%%%% Body of letter   %%%%%%%%%%%%%%
+% The ``\lipsum[1-8]" command just fills the letter with 8 paragraphs of Latin for the purposes of filler.  Unless you really want to send filler Latin to someone, you will replace this command with actual text.  Do that here:
+%
+\lipsum[1-2]
+
+%%%%%%% ``closing'' sets the sign-off line.
+\closing{Sincerely,}
+
+% Comment out/in the lines below as necessary
+%\encl{If an enclosure is provided, let them know what it is.}
+
+%\ps{A postscript if that is a thing you do.}
+
+%\cc{Someone Who Cares (and is copied).}
+
+\end{letter}
+
+\end{document}
