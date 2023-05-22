@@ -47,7 +47,7 @@
 %
 % This work has the LPPL maintenance status "maintained".
 %
-% This Current Maintainer of this work is skyleaworlder.
+% This Current Maintainer of this work is R. Lin.
 %
 % This work consists of all the *.tex, *.cls and *.sty files in
 %   https://github.com/TJ-CSCCG/tongji-recommendation-template
