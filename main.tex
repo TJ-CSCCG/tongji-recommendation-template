@@ -14,8 +14,6 @@
 \usepackage{lipsum}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
-\usepackage{url}
-\usepackage{svg}
 \usepackage{graphicx}
 \usepackage{eso-pic}
 
@@ -38,7 +36,7 @@
 \begin{tikzpicture}
     \path (0,0) -- (\paperwidth,\paperheight);
     \node[opacity=.1] at (current page.center)
-    {\includesvg[width=0.55\textwidth]{logo.svg}}; 
+    {\includegraphics[width=0.55\textwidth]{logo.pdf}}; 
 \end{tikzpicture}
 \vfill}}}
 
@@ -63,7 +61,7 @@
 %%%%%%%%%%% Put Personal Information Here %%%%%%%%%%%
 \def\name{Allen Turing,\\
 Associate Professor,\\
-Department of Computer Science, \\
+Department of Computer Science and Technology, \\
 Tongji University
 }
 
@@ -88,10 +86,10 @@ Tongji University
 
 %%%%%%%%%%%%%%%%  Footer information  %%%%%%%%%%%%%%%%%%
 \def\school{\small{
-Tongji Univ. $\cdot$
-Dept. of Comp. Sci. $\cdot$
-Zhixin Bldg., 4800 Cao'an Hwy. $\cdot$
-Shanghai, 201804}
+    Tongji Univ. $\cdot$
+    Dept. of CS and Tech. $\cdot$
+    Zhixin Bldg., 4800 Cao'an Hwy. $\cdot$
+    Shanghai, 201804}
 }
 
 \cfoot{\school}
@@ -136,7 +134,7 @@ Shanghai, 201804}
 
 \opening{Dear Application Committee,}
 
-% Remove it if you do not want watermark
+% Remove it if you do not want the Tongji logo watermark
 \watermark{}{}{}
 
 \lipsum[1-6]

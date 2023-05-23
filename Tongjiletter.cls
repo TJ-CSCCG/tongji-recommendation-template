@@ -111,14 +111,16 @@
      #1\par\nobreak
 }
 
+\RequirePackage{varwidth}
+
 \renewcommand{\closing}[1]{\par\nobreak\vspace{\parskip}%
     \stopbreaks
     \noindent
-    \hspace*{0.6\textwidth}\parbox{0.4\textwidth}{\raggedright
+    \hfill\begin{varwidth}{\textwidth}\raggedright
     \ignorespaces #1\\[4\medskipamount]%
     \ifx\@empty\fromsig
         \fromname
     \else \fromsig 
-    \fi\strut}%
+    \fi\strut\end{varwidth}%
     \par
 }
