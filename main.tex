@@ -5,8 +5,8 @@
 % Further modifications and maintenance by Rizhong Lin (rizhonglin@tongji.edu.cn) as of May 22, 2023.
 
 \documentclass[12pt]{Tongjiletter}
-\usepackage{fontspec} 
-\usepackage{tikz} 
+\usepackage{fontspec}
+\usepackage{tikz}
 \usepackage{xcolor}
   \definecolor{tongjiblue}{rgb}{0, 0.372, 0.643}
 \usepackage[english]{babel}
@@ -35,7 +35,7 @@
 \begin{tikzpicture}
     \path (0,0) -- (\paperwidth,\paperheight);
     \node[opacity=.1] at (current page.center)
-    {\includegraphics[width=0.55\textwidth]{logo.pdf}}; 
+    {\includegraphics[width=0.55\textwidth]{logo.pdf}};
 \end{tikzpicture}
 \vfill}}}
 
@@ -68,14 +68,14 @@ Tongji University
 \def\Where{%
     \textbf{\color{tongjiblue}Department of Computer Science, \\
     Tongji University}
-} 
+}
 
 \def\Address{
     4800 Cao'an Hwy.,\\
     Jiading Dist.,
-} 
+}
 
-\def\CityZip{Shanghai, 201804} 
+\def\CityZip{Shanghai, 201804}
 
 \def\TEL{\textbf{\color{tongjiblue}Phone}: 541-555-5555}
 
@@ -96,7 +96,7 @@ Tongji University
 
 
 %%%%%%%%%%%%%%%%%%%%%  Signature line  %%%%%%%%%%%%%%%%%%%%%
-\signature{ 
+\signature{
     \vspace{-12mm}\includegraphics[scale=0.40]{signature_block.pdf}\\\vspace{-2mm}
     \name
 }
@@ -105,12 +105,12 @@ Tongji University
 \address{}
 
 \def\newaddress{%
-    \Where\\ 
-    \Address\\ 
-    \CityZip\\ 
-    \TEL\\ 
-    \Email\\ 
-    \URL 
+    \Where\\
+    \Address\\
+    \CityZip\\
+    \TEL\\
+    \Email\\
+    \URL
 }
 
 %%%%%%%%%%%  DATE  %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -122,8 +122,8 @@ Tongji University
 \begin{document}
 
 \begin{letter}{
-    Some University\\ 
-    Some Address\\ 
+    Some University\\
+    Some Address\\
     SomeTown, SomeState SomeZip
 }
 

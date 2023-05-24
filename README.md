@@ -18,7 +18,7 @@
 
 之后登陆 Overleaf，新建项目后，将整个文件夹直接上传到项目中。
 
-为确保编译通过，需将 Overleaf 的 Menu/Compiler 设置为 **XeLaTeX** / **LuaLaTeX**。
+为确保编译通过，需将 Overleaf 的 Menu/Compiler 设置为 **pdfLaTeX** / **LuaLaTeX**。
 
 ## :two: 贡献
 
