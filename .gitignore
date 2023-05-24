@@ -1,0 +1,16 @@
+.DS_Store
+_out
+!figures/tongji.pdf
+
+# LaTeX compile output files
+*.pdf
+*.fls
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.log
+*.out
+*.toc
+*.xdv
+*.synctex.gz
