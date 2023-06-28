@@ -13,7 +13,7 @@
 #### 自行导入 Overleaf
 
 ```shell
-> git clone https://github.com/TJ-CSCCG/tongji-recommendation-template
+> git clone https://github.com/TJ-CSCCG/tongji-recommendation-template.git
 ```
 
 之后登陆 Overleaf，新建项目后，将整个文件夹直接上传到项目中。
